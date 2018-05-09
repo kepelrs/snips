@@ -15,4 +15,4 @@
 # allowed filenames
 !.gitignore
 !gulpfile.js
-!index.html
+!/index.html

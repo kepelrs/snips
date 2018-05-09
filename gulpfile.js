@@ -14,15 +14,22 @@ var jasmine = require('gulp-jasmine-phantom');
 // DEFAULT gulp behavior
 gulp.task('default', ['copy-imgs', 'copy-html', 'styles', 'scripts'], function() {
     // watch changes scss
-    gulp.watch('sass/**/*.scss', ['styles']);
-    gulp.watch('*.html', ['copy-html', 'styles']);
-    gulp.watch('img/*', ['copy-imgs']);
+    gulp.watch('sass/**/*.scss', ['styles', 'reload-browser']);
+    gulp.watch('*.html', ['copy-html', 'reload-browser']);
+    gulp.watch('img/**/*', ['copy-imgs', 'reload-browser']);
+    gulp.watch('js/**/*.js', ['scripts', 'reload-browser']);
 
 
     // serve with browserSync
     browserSync.init({
         server: "./dist"
     });
+});
+
+// this task reloads the browser
+gulp.task('reload-browser', function() {
+        //resync browser
+        browserSync.reload();
 });
 
 // gulp STYLE files into dist folder and resync browser
@@ -36,9 +43,6 @@ gulp.task('styles', function() {
         }))
         // save css
         .pipe(gulp.dest('dist/css'));
-
-        //resync browser
-        browserSync.reload();
 });
 
 // copy HTML to dist
@@ -50,7 +54,7 @@ gulp.task('copy-html', function() {
 
 // copy IMAGES to dist
 gulp.task('copy-imgs', function() {
-    gulp.src('img/*')
+    gulp.src('img/**/*')
         // optimize image sizes
         .pipe(imagemin({
             progressive: true,
