@@ -16,7 +16,7 @@ gulp.task('default', ['copy-imgs', 'copy-html', 'styles', 'scripts'], function()
     // watch changes scss
     gulp.watch('sass/**/*.scss', ['styles']);
     gulp.watch('*.html', ['copy-html', 'styles']);
-    gulp.watch('img/*', ['copy-imgs']);
+    gulp.watch('img/**/*', ['copy-imgs']);
 
 
     // serve with browserSync
@@ -50,7 +50,7 @@ gulp.task('copy-html', function() {
 
 // copy IMAGES to dist
 gulp.task('copy-imgs', function() {
-    gulp.src('img/*')
+    gulp.src('img/**/*')
         // optimize image sizes
         .pipe(imagemin({
             progressive: true,
