@@ -1,0 +1,18 @@
+# ignore all by default
+*
+
+# except for these folders
+!/dist
+!/js
+!/js/**/*
+!/img
+!/img/**/*
+!/css
+!/css/**/*
+!/sass
+!/sass/**/*
+
+# allowed filenames
+!.gitignore
+!gulpfile.js
+!index.html
