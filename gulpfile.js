@@ -19,7 +19,6 @@ gulp.task('default', ['copy-imgs', 'copy-html', 'styles', 'scripts'], function()
     gulp.watch('img/**/*', ['copy-imgs', 'reload-browser']);
     gulp.watch('js/**/*.js', ['scripts', 'reload-browser']);
 
-
     // serve with browserSync
     browserSync.init({
         server: "./dist"
